@@ -11,6 +11,8 @@ class URBAGgraphs:
 
     obs_color='blue'
     pre_color='tab:orange'
+    
+    dpi = 100
 
     def load_file(self, file):
         dateparse = lambda x: pd.datetime.strptime(x, '%Y-%m-%d')
@@ -79,7 +81,7 @@ class URBAGgraphs:
         ax1.set_ylabel('concentration {}'.format(pt.AllPolutants[polutant]['obs_units']) )
         ax1.set_title(str(estacions)+' '+polutant)
         ax1.legend()
-        plt.savefig(filename, dpi=100, bbox_inches='tight')
+        plt.savefig(filename, dpi=self.dpi, bbox_inches='tight')
         plt.show()
         return dp, dpd, q5, q95
 
@@ -131,7 +133,7 @@ class URBAGgraphs:
         ax1.set_ylabel('concentration {}'.format(pt.AllPolutants[polutant]['obs_units']) )      
         ax1.set_title(str(estacions)+' '+polutant)
         ax1.legend()
-        plt.savefig(filename, dpi=300, bbox_inches='tight')
+        plt.savefig(filename, dpi=self.dpi, bbox_inches='tight')
         plt.show()
         return dp, dpd, q5, q95      
         
@@ -157,7 +159,7 @@ class URBAGgraphs:
                 figsize=(12,4))
         plt.title(polutant+' '+estacio)
         plt.ylabel('concentration {}'.format(pt.AllPolutants[polutant]['obs_units']) )
-        plt.savefig(filename, dpi=300)
+        plt.savefig(filename, dpi=self.dpi)
         plt.show()
         
         return df
@@ -176,7 +178,7 @@ class URBAGgraphs:
                 figsize=(20,10), linewidth=5, fontsize=20)
         plt.title(polutant+' '+estacio)
         plt.ylabel('concentration {}'.format(pt.AllPolutants[polutant]['obs_units']) )
-        plt.savefig(filename, dpi=300, bbox_inches='tight')
+        plt.savefig(filename, dpi=self.dpi, bbox_inches='tight')
         plt.show()
         
         return df
@@ -216,7 +218,7 @@ class URBAGgraphs:
         ax.grid(axis='x')
         ax.set_xlabel('Person Correlation')
         plt.title(polutant+' predicted vs observation Pearson correlation \n from '+self.df['DATA'].min().strftime('%d/%m/%Y')+' to '+self.df['DATA'].max().strftime('%d/%m/%Y'))
-        plt.savefig(filename, dpi=300)
+        plt.savefig(filename, dpi=self.dpi)
         plt.show()          
         
 
@@ -248,7 +250,7 @@ class URBAGgraphs:
         sns.set_context(font_scale=2)
         plt.title(polutant+' predicted-observed concentration \n Station vs Day; from '+self.df['DATA'].min().strftime('%d/%m/%Y')+' to '+self.df['DATA'].max().strftime('%d/%m/%Y'))
         sns.heatmap(pivot_df, cmap='coolwarm', center=0)
-        plt.savefig(filename, dpi=300)
+        plt.savefig(filename, dpi=self.dpi)
         plt.show() 
         return pivot_df
     
@@ -279,7 +281,7 @@ class URBAGgraphs:
         sns.set_context(font_scale=2)
         plt.title(polutant+' predicted-observed concentration \n Station vs Hour; from '+self.df['DATA'].min().strftime('%d/%m/%Y')+' to '+self.df['DATA'].max().strftime('%d/%m/%Y'))
         sns.heatmap(pivot_df, cmap='coolwarm', center=0)
-        plt.savefig(filename, dpi=300, bbox_inches='tight')
+        plt.savefig(filename, dpi=self.dpi, bbox_inches='tight')
         plt.show() 
         return pivot_df    
     
@@ -309,7 +311,7 @@ class URBAGgraphs:
         sns.set_context(font_scale=2)
         plt.title(polutant+' predicted-observed concentration \n Day vs Hour; from '+self.df['DATA'].min().strftime('%d/%m/%Y')+' to '+self.df['DATA'].max().strftime('%d/%m/%Y'))        
         sns.heatmap(pivot_df, cmap='coolwarm', center=0)
-        plt.savefig(filename, dpi=300, bbox_inches='tight')
+        plt.savefig(filename, dpi=self.dpi, bbox_inches='tight')
         plt.show() 
         return pivot_df    
 
@@ -324,7 +326,7 @@ class URBAGgraphs:
         '''
         #sns.set_context('poster',font_scale=4)
         sns.lmplot(x='OBSERVATION', y=model+'_'+polutant+'_'+pt.AllPolutants[polutant]['obs_units'], data=self.df, col='ALTITUD', height=3)
-        plt.savefig(filename, dpi=300, bbox_inches='tight')    
+        plt.savefig(filename, dpi=self.dpi, bbox_inches='tight')    
     
 
     def plotCorrelationMatrix(self, model, polutant, filename='./output/correlationMatrix'):
@@ -352,6 +354,6 @@ class URBAGgraphs:
         ax.set_yticks(np.arange(len(municipis)))    
         ax.set_xticklabels(np.arange(1,len(dies)+1,1), fontsize=6)
         ax.set_yticklabels(municipis,fontsize=6)
-        plt.savefig(filename, dpi=300, bbox_inches='tight')
+        plt.savefig(filename, dpi=self.dpi, bbox_inches='tight')
         plt.show() 
         return table        
