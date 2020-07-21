@@ -10,9 +10,9 @@ estacions = ug.listEstacions()
 
 '''Daily Profiles'''
 
-#ug.plot_Daily_Profile_Error_Bars('SO2', ['Barcelona (Eixample)'], 'M', 'graphErrorBars', error = 'std', description=False)
+ug.plot_Daily_Profile_Error_Bars('SO2', ['Barcelona (Eixample)'], 'M', error = 'std', description=False)
 
-#ug.plot_Daily_Profile_Areas('SO2', ['Barcelona (Eixample)'], 'M', 'graphAreas', error = '90percentil', description=False)
+ug.plot_Daily_Profile_Areas('SO2', ['Barcelona (Eixample)'], 'M', error = '90percentil', description=False)
 
 
 

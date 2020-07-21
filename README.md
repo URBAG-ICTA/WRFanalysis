@@ -1,15 +1,17 @@
 # WRFanalysis
 This project provides a set of functionalities to evaluate
-WRF simulation output and compare them with physical observations.
+WRF-CHEM simulation output and compare them with physical observations.
 
 1. Datamanagement
+
 The DataManager Component allows to transform the data acquired from
 Xarxa de Vigilància i Previsió de la Contaminació (XVPCA) and then add
-to it a column with the corresponding predictions for each variable made 
+to it a column with the corresponding predictions for each variable simulated 
 by a WRF-CHEM model.
 Once the Data is in the correct format:
 
 2. URBAGgraphs
+
 The URBAGgraphs component allows to create several plots to quickly analyze
 and compare simulations vs real data.
 
