@@ -79,7 +79,7 @@ class URBAGgraphs:
         ax1.set_ylabel('concentration {}'.format(pt.AllPolutants[polutant]['obs_units']) )
         ax1.set_title(str(estacions)+' '+polutant)
         ax1.legend()
-        plt.savefig(filename, dpi=300, bbox_inches='tight')
+        plt.savefig(filename, dpi=100, bbox_inches='tight')
         plt.show()
         return dp, dpd, q5, q95
 
