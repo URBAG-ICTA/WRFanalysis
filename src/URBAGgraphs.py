@@ -217,7 +217,7 @@ class URBAGgraphs:
         ax.barh(estations, correlations, height=0.8)
         ax.grid(axis='x')
         ax.set_xlabel('Person Correlation')
-        plt.title(polutant+' predicted vs observation Pearson correlation \n from '+self.df['DATA'].min().strftime('%d/%m/%Y')+' to '+self.df['DATA'].max().strftime('%d/%m/%Y'))
+        plt.title(polutant+' simulated vs observation Pearson correlation \n from '+self.df['DATA'].min().strftime('%d/%m/%Y')+' to '+self.df['DATA'].max().strftime('%d/%m/%Y'))
         plt.savefig(filename, dpi=self.dpi)
         plt.show()          
         
@@ -229,7 +229,7 @@ class URBAGgraphs:
         Parameters
         ----------
         model : string
-            Column name in the dataframe df that contains the predicted values
+            Column name in the dataframe df that contains the simulated values
         polutant : string
             polutant that is beiing ploted its main use is in the title            
         filename : string, optional
@@ -248,7 +248,7 @@ class URBAGgraphs:
         pivot_df = self.df.pivot_table(values='correlation', index='NOM ESTACIO', columns='DAY')
         plt.figure(figsize=(10,10))
         sns.set_context(font_scale=2)
-        plt.title(polutant+' predicted-observed concentration \n Station vs Day; from '+self.df['DATA'].min().strftime('%d/%m/%Y')+' to '+self.df['DATA'].max().strftime('%d/%m/%Y'))
+        plt.title(polutant+' simulated-observed concentration \n Station vs Day; from '+self.df['DATA'].min().strftime('%d/%m/%Y')+' to '+self.df['DATA'].max().strftime('%d/%m/%Y'))
         sns.heatmap(pivot_df, cmap='coolwarm', center=0)
         plt.savefig(filename, dpi=self.dpi)
         plt.show() 
@@ -261,7 +261,7 @@ class URBAGgraphs:
         Parameters
         ----------
         model : string
-            Column name in the dataframe df that contains the predicted values
+            Column name in the dataframe df that contains the simulated values
         polutant : string
             polutant that is beiing ploted its main use is in the title\n
         filename : string, optional
@@ -279,7 +279,7 @@ class URBAGgraphs:
         pivot_df = self.df.pivot_table(values='correlation', index='NOM ESTACIO', columns='HOUR')
         plt.figure(figsize=(10,10))
         sns.set_context(font_scale=2)
-        plt.title(polutant+' predicted-observed concentration \n Station vs Hour; from '+self.df['DATA'].min().strftime('%d/%m/%Y')+' to '+self.df['DATA'].max().strftime('%d/%m/%Y'))
+        plt.title(polutant+' simulated-observed concentration \n Station vs Hour; from '+self.df['DATA'].min().strftime('%d/%m/%Y')+' to '+self.df['DATA'].max().strftime('%d/%m/%Y'))
         sns.heatmap(pivot_df, cmap='coolwarm', center=0)
         plt.savefig(filename, dpi=self.dpi, bbox_inches='tight')
         plt.show() 
@@ -292,7 +292,7 @@ class URBAGgraphs:
         Parameters
         ----------
         model : string
-            Column name in the dataframe df that contains the predicted values
+            Column name in the dataframe df that contains the simulated values
         polutant : string
             polutant that is beiing ploted its main use is in the title            
         filename : string, optional
@@ -309,7 +309,7 @@ class URBAGgraphs:
         self.df['correlation'] = self.df[model+'_'+polutant+'_'+pt.AllPolutants[polutant]['obs_units']]-self.df['OBSERVATION']
         pivot_df = self.df.pivot_table(values='correlation', index='DAY', columns='HOUR')
         sns.set_context(font_scale=2)
-        plt.title(polutant+' predicted-observed concentration \n Day vs Hour; from '+self.df['DATA'].min().strftime('%d/%m/%Y')+' to '+self.df['DATA'].max().strftime('%d/%m/%Y'))        
+        plt.title(polutant+' simulated-observed concentration \n Day vs Hour; from '+self.df['DATA'].min().strftime('%d/%m/%Y')+' to '+self.df['DATA'].max().strftime('%d/%m/%Y'))        
         sns.heatmap(pivot_df, cmap='coolwarm', center=0)
         plt.savefig(filename, dpi=self.dpi, bbox_inches='tight')
         plt.show() 
